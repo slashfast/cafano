@@ -1,0 +1,6 @@
+venv
+.idea
+.dockerignore
+.env
+Dockerfile
+requirements.txt
