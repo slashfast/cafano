@@ -86,9 +86,14 @@ def callback_query(call):
 
 @bot.message_handler(commands=['size'])
 def size_settings_message(message):
+    current_setting = db.get(message.from_user.id)
+
+    if current_setting is not None:
+        current_setting = current_setting.capitalize()
+
     bot.send_message(
         message.chat.id,
-        f'Select a desired size of obtained images\nCurrent setting is *{db.get(message.from_user.id).capitalize()}* size',
+        f'Select a desired size of obtained images\nCurrent setting is *{current_setting}* size',
         reply_markup=select_size_keyboard())
 
 
